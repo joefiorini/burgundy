@@ -4,7 +4,7 @@
   "author": "Joe Fiorini <joe@joefiorini.com>",
   "description": "A simple twitter dm lister",
   "dependencies": {
-    "websocket": "1.0.3",
+    "socket.io": "*",
     "ntwitter": "*",
     "express": "*",
     "jade": "*"

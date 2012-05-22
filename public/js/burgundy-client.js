@@ -1,8 +1,4 @@
 function BurgundyClient(){
-  this.messageHandlers = {
-    refreshMessages: this.refreshMessages.bind(this),
-    error: this.handleError.bind(this)
-  }
 }
 
 BurgundyClient.connect = function(){
@@ -10,41 +6,21 @@ BurgundyClient.connect = function(){
 }
 
 BurgundyClient.prototype.connect = function(){
-  var url = "ws://" + document.URL.substr(7).split('/')[0];
+  var url = "http://" + document.URL.substr(7).split('/')[0];
 
-  var wsCtor = window['MozWebSocket'] ? MozWebSocket : WebSocket;
-  this.socket = new wsCtor(url, 'burgundy-client');
+  this.socket = io.connect(url);
 
-  this.socket.onmessage = this.handleWebsocketMessage.bind(this);
-  this.socket.onclose = this.handleWebsocketClose.bind(this);
+  this.socket.on("twitter.direct_message", this.refreshMessages.bind(this))
+  this.socket.on("twitter.error", this.handleError.bind(this))
+  this.socket.on("disconnect", this.handleWebsocketClose.bind(this));
 }
-
-BurgundyClient.prototype.handleWebsocketMessage = function(message) {
-    try {
-        var command = JSON.parse(message.data);
-    }
-    catch(e) { /* do nothing */ }
-
-    if (command) {
-        this.dispatchCommand(command);
-    }
-};
 
 BurgundyClient.prototype.handleWebsocketClose = function() {
     alert("WebSocket Connection Closed.");
 };
 
-BurgundyClient.prototype.dispatchCommand = function(command) {
-    // Do we have a handler function for this command?
-    var handler = this.messageHandlers[command.msg];
-    if (typeof(handler) === 'function') {
-        // If so, call it and pass the parameter data
-        handler.call(this, command.data);
-    }
-};
-
 BurgundyClient.prototype.refreshMessages = function(data) {
-  $(".message-list").prepend(data);
+  $(".message-list").prepend(data.message);
 }
 
 BurgundyClient.prototype.handleError = function(error) {

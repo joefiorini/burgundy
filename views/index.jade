@@ -8,6 +8,7 @@ html
      | There was an error processing messages. Reloading in <span class="time">5</span> seconds.
     ul(class="message-list")
       != partial("message", {collection:messages})
+    script(src="/socket.io/socket.io.js")
     script(src="/js/burgundy-client.js")
     script(language="javascript")
       App = {
