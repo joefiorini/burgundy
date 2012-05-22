@@ -1,4 +1,8 @@
-li
-  = message.sender.name
-  img(src=message.sender.profile_image_url)
-  = message.text
+div.message-container
+  article.message
+    p.message-text= message.text
+    figure.profile-image
+      img(src=message.sender.profile_image_url)
+      figcaption.meta
+        p.sender-name= message.sender.name
+        p.timestamp= formattedDate(message.created_at)

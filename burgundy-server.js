@@ -28,6 +28,26 @@ io.configure(function(){
   io.set("polling duration", 5);
 });
 
+app.helpers({
+  formattedDate: function(dateStr){
+    var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        date = new Date(dateStr),
+        day = date.getDay(),
+        hours = date.getHours(),
+        minutes = date.getMinutes(),
+        ampm = hours > 12 ? "pm" : "am"
+    if(hours > 12){
+      hours -= 12;
+    } else if(hours == 0){
+      hours = 12;
+    }
+    if(minutes < 10){
+      minutes = "0" + minutes;
+    }
+    return dayNames[day] + " at " + hours + ":" + minutes + ampm;
+  }
+});
+
 app.configure(function(){
   app.use(express.static(__dirname + "/public"));
   app.set("views", __dirname + "/views");
@@ -53,7 +73,6 @@ app.get("/", function(req, res){
 });
 
 app.get("/sign-in", function(req, res){
-  console.log("Twitter request");
   login = twitter.login("/sign-in");
   login(req, res, function(arg){
     console.log("next", arg);

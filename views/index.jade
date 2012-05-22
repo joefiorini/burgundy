@@ -2,12 +2,21 @@ doctype 5
 html
   head
     title Burgundy
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+    link(rel="stylesheet/less", href="/css/main.less")
+    script(src="/js/less.js")
   body
     div.error(style="display:none")
      | There was an error processing messages. Reloading in <span class="time">5</span> seconds.
-    ul(class="message-list")
-      != partial("message", {collection:messages})
+    .container
+      each message, i in messages
+        if i % 2 == 0
+          | <div class="message-group row-fluid">
+          != partial("message", {object:message})
+        else
+          != partial("message", {object:message})
+          | </div>
     script(src="/socket.io/socket.io.js")
     script(src="/js/burgundy-client.js")
     script(language="javascript")

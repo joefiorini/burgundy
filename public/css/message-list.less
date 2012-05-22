@@ -1,0 +1,47 @@
+.message-container {
+  .makeColumn(6);
+  margin-bottom: 2em;
+}
+
+.message-group .message-container:first-child {
+  margin-left: 0;
+}
+
+.message {
+  background-color: desaturate(#fefec8, 10%);
+  padding: 1em 2em;
+  border: solid black 1px;
+  .border-radius(5px);
+  .box-shadow(inset 1px 1px 1px #fff);
+  .box-shadow(1px 1px 5px 3px rgba(0,0,0,.5));
+  text-shadow: 1px 1px 1px #fff;
+  #gradient > .vertical(desaturate(#fefec8, 10%), desaturate(#fefec8, 25%));
+}
+
+.message-text {
+  font-family: MuseoSlab500Regular, serif;
+  font-size: 3em;
+  line-height: 1.5em;
+  margin-bottom: 1em;
+}
+
+.profile-image {
+  -webkit-margin-after: 0;
+  -webkit-margin-end: 0;
+  text-align: right;
+}
+
+.meta {
+  margin-top: .5em;
+}
+
+.sender-name {
+  font-family: MuseoSans500Regular, sans-serif;
+  font-size: 2em;
+  margin-bottom: 4px;
+}
+
+.timestamp {
+  font-family: MuseoSans500Italic, sans-serif;
+  font-size: 1em;
+}

@@ -16,7 +16,7 @@ BurgundyClient.prototype.connect = function(){
 }
 
 BurgundyClient.prototype.handleWebsocketClose = function() {
-    alert("WebSocket Connection Closed.");
+    console.log("WebSocket Connection Closed.");
 };
 
 BurgundyClient.prototype.refreshMessages = function(data) {
