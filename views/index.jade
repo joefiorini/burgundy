@@ -7,6 +7,11 @@ html
     link(rel="stylesheet/less", href="/css/main.less")
     script(src="/js/less.js")
   body
+    div.navbar
+      div.navbar-inner
+        div.container
+          .pull-left
+            img(src=current_user.profile_image_url)
     div.error(style="display:none")
      | There was an error processing messages. Reloading in <span class="time">5</span> seconds.
     .container

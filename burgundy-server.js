@@ -65,8 +65,11 @@ app.get("/", function(req, res){
     });
     twitter.getDirectMessages({ count: 20 }, function(error, data){
       if(error){ console.log("ERROR!", error); }
-      res.render('index', {layout: false, messages: data});
-    });
+      twitter.showUser(cookie.user_id, function(error, user){
+        if(error){ console.log("ERROR!", error); }
+        res.render('index', {layout: false, messages: data, current_user: user[0]});
+      });
+      });
   } else {
     res.send("<a href='/sign-in' class='twitter'>Sign in with Twitter</a>");
   }
