@@ -1,8 +1,9 @@
 var webSocketServer = require('websocket').server,
     http = require('http'),
     Twitter = require('ntwitter'),
-    creds = require('./creds');
-
+    creds = require('./creds'),
+    consumer_key = (process.env.consumer_key || creds.consumer_key);
+    consumer_secret = (process.env.consumer_secret || creds.consumer_secret);
 twitter = new Twitter({
   consumer_key: creds.consumer_key,
   consumer_secret: creds.consumer_secret
@@ -43,7 +44,7 @@ app.get("/sign-in", function(req, res){
   });
 });
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("Listening on port 3000");
 });
 
