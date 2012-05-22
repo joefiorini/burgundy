@@ -16,12 +16,14 @@ html
      | There was an error processing messages. Reloading in <span class="time">5</span> seconds.
     .container
       each message, i in messages
-        if i % 2 == 0
+        if i % 3 == 0
           | <div class="message-group row-fluid">
           != partial("message", {object:message})
-        else
+        else if i % 2 == 0
           != partial("message", {object:message})
           | </div>
+        else
+          != partial("message", {object:message})
     script(src="/socket.io/socket.io.js")
     script(src="/js/burgundy-client.js")
     script(language="javascript")
