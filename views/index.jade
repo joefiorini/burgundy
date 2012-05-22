@@ -12,8 +12,10 @@ html
         div.container
           .pull-left
             img(src=current_user.profile_image_url)
-    div.error(style="display:none")
-     | There was an error processing messages. Reloading in <span class="time">5</span> seconds.
+    div.alert.error(style="display:none")
+      | <strong>Warning!</strong> There was an error processing messages. Reloading in <span class="time">5</span> seconds.
+    div.alert.alert-error.disconnected(style="display:none")
+     | <strong>Uh oh!</strong> You've been disconnected from the server. Retrying connect in <span class="time">5</span> seconds.
     .container
       each message, i in messages
         if i % 3 == 0
