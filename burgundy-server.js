@@ -85,9 +85,9 @@ app.listen(process.env.PORT || 3000, function(){
 
 io.sockets.on('connection', function(socket) {
     console.log((new Date()) + ' Connection accepted.');
-    twitter.stream("user", {with:"user"}, function(stream){
+    twitter.stream("user", {with:"user"}, function(stream, statusCode){
       stream.on("error", function(error){
-        console.log("Error", error);
+        console.log("Error", error, statusCode);
         socket.emit("twitter.error", { msg: 'error', data: error });
       });
       stream.on("data", function(data){
