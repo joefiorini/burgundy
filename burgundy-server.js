@@ -1,9 +1,19 @@
+function loadConsumerTokens(){
+  var obj;
+  if(process.env.consumer_key){
+    obj = process.env
+  } else {
+    obj = require("./creds");
+  }
+  return obj;
+}
+
 var webSocketServer = require('websocket').server,
     http = require('http'),
     Twitter = require('ntwitter'),
-    creds = require('./creds'),
-    consumer_key = (process.env.consumer_key || creds.consumer_key);
-    consumer_secret = (process.env.consumer_secret || creds.consumer_secret);
+    creds = loadConsumerTokens(),
+    consumer_key = creds.consumer_key;
+    consumer_secret = creds.consumer_secret;
 twitter = new Twitter({
   consumer_key: creds.consumer_key,
   consumer_secret: creds.consumer_secret
