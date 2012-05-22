@@ -23,6 +23,11 @@ var express = require("express"),
     app = express.createServer(),
     io = require('socket.io').listen(app);
 
+io.configure(function(){
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 5);
+});
+
 app.configure(function(){
   app.use(express.static(__dirname + "/public"));
   app.set("views", __dirname + "/views");
