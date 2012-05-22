@@ -21,7 +21,7 @@ html
         if i % 3 == 0
           | <div class="message-group row-fluid">
           != partial("message", {object:message})
-        else if i % 2 == 0
+        else if (i+1) % 3 == 0
           != partial("message", {object:message})
           | </div>
         else
