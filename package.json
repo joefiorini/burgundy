@@ -1,0 +1,12 @@
+{
+  "name": "burgundy",
+  "version": "0.0.1",
+  "author": "Joe Fiorini <joe@joefiorini.com>",
+  "description": "A simple twitter dm lister",
+  "dependencies": {
+    "websocket": "1.0.3",
+    "ntwitter": "*",
+    "express": "*",
+    "jade": "*"
+  }
+}

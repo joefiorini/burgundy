@@ -1,0 +1,18 @@
+doctype 5
+html
+  head
+    title Burgundy
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+  body
+    div.error(style="display:none")
+     | There was an error processing messages. Reloading in <span class="time">5</span> seconds.
+    ul(class="message-list")
+      != partial("message", {collection:messages})
+    script(src="/js/burgundy-client.js")
+    script(language="javascript")
+      App = {
+        init: function(){
+          BurgundyClient.connect();
+        }
+      }
+      $(App.init);
