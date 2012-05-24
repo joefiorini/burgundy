@@ -19,6 +19,7 @@ First off, Burgundy is written in Javascript and uses Node.js and NPM. Make sure
 
 1. Clone code to your machine
 2. Run `npm install` to get the dependencies.
-3. Fire up a server with `node burgundy-server.js`
-4. Visit <http://localhost:3000/>, sign in with Twitter and get developing!
+3. Create a creds.js file that will contain your credentials based on the example provided.
+4. Fire up a server with `node burgundy-server.js`
+5. Visit <http://localhost:3000/>, sign in with Twitter and get developing!
 
